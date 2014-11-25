@@ -15,7 +15,7 @@ namespace GuessSecretNumber.Models
         private GuessedNumber _lastGuessedNumber; // Innehåller det senaste gissade numret. 
         private List<GuessedNumber> _guessedNumbers; // Lista med alla gissade nummer.
 
-
+        [Range(1, 100, ErrorMessage = "* Talet måste vara mellan 1 till 100!")]
         [DisplayName("Gissa på ett tal mellan 1 och 100: "), Required(ErrorMessage = "* Du måste skicka in ett tal mellan 1 till 100!")]
         public int NewNumber { get; set; }
         public SecretNumber()
