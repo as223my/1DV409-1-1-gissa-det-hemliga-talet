@@ -1,0 +1,17 @@
+﻿@model GuessSecretNumber.Models.SecretNumber
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h1>Gissa det hemliga talet</h1>
+    <h2>Rätt Gissat!</h2>
+
+    <p> Grattis, du klarade det på @Model.Count försöket!</p> 
+
+    @Html.Partial("~/Views/Shared/SecretNumberTable.cshtml")
+
+    <br />
+
+     @Html.ActionLink("Slumpa nytt hemligt tal!", "Index")
+

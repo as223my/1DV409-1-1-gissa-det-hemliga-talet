@@ -1,0 +1,46 @@
+﻿@model GuessSecretNumber.Models.SecretNumber
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <h1>Gissa det hemliga talet</h1>
+    <h2>@Model.Count av 7 gissningar gjorda!</h2>
+
+    @Html.Partial("~/Views/Shared/SecretNumberForm.cshtml")
+
+    <br />
+    <br />
+
+    @if(@Model.LastGuessedNumber.Outcome == GuessSecretNumber.Models.Outcome.High)
+    {
+    if (@Model.Count == 7){
+        <h2> @Model.LastGuessedNumber.Number är för högt. Inga fler gissningar, det hemliga talet var: @Model.Number</h2>
+    }else{
+        <h2>@Model.LastGuessedNumber.Number är för högt.</h2>
+    }
+    }
+        
+    @if (@Model.LastGuessedNumber.Outcome == GuessSecretNumber.Models.Outcome.Low)
+    {
+        if(@Model.Count == 7){
+            <h2>@Model.LastGuessedNumber.Number är för lågt. Inga fler gissningar, det hemliga talet var: @Model.Number</h2>   
+        }
+        else
+        {
+            <h2>@Model.LastGuessedNumber.Number är för lågt.</h2>
+        }
+    }
+        
+    @if (@Model.LastGuessedNumber.Outcome == GuessSecretNumber.Models.Outcome.OldGuess)
+    {
+        <h2>Du har redan gissat på @Model.LastGuessedNumber.Number, välj ett annat tal!</h2>  
+    }
+        
+    @Html.Partial("~/Views/Shared/SecretNumberTable.cshtml")
+     
+    <br />
+
+    @Html.ActionLink("Slumpa nytt hemligt tal!", "Index")
+
